@@ -406,6 +406,7 @@ require('lazy').setup({ -- NOTE: Plugins can be added with a link (or for a gith
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'projects')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -439,7 +440,9 @@ require('lazy').setup({ -- NOTE: Plugins can be added with a link (or for a gith
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, {
         desc = '[ ] Find existing buffers',
       })
-
+      vim.keymap.set('n', '<leader>sp', function()
+        require('telescope').extensions.projects.projects {}
+      end, { desc = '[S]earch [P]roject' })
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
