@@ -21,6 +21,7 @@ return {
       vim.keymap.set('n', 'gd', '<Cmd>Lspsaga peek_definition<CR>', { desc = 'Peek Definition' }),
       vim.keymap.set('n', 'gD', '<Cmd>Lspsaga goto_definition<CR>', { desc = '[G]oto [D]efinition' }),
       vim.keymap.set('n', 'ca', '<Cmd>Lspsaga code_action<CR>', { desc = '[C]ode [A]ction' }),
+      vim.keymap.set({ 'n', 't' }, '<C-t>', '<Cmd>Lspsaga term_toggle<CR>', { desc = '[T]oggle [T]erminal' }),
     }
   end,
 }
