@@ -231,6 +231,26 @@ return {
       -- ts_ls = {},
       --
 
+      eslint = {
+        settings = {
+          workingDirectories = { mode = 'location' },
+          packageManager = 'npm',
+          plugins = {
+            prettier = false,
+          },
+          rules = {
+            ['prettier/prettier'] = 'off',
+          },
+        },
+        root_dir = function(fname)
+          local util = require('lspconfig.util')
+          return util.find_git_ancestor(fname) or util.find_node_modules_ancestor(fname)
+        end,
+        capabilities = vim.tbl_deep_extend('force', capabilities, {
+          documentFormattingProvider = false,
+        }),
+      },
+
       lua_ls = {
         -- cmd = { ... },
         -- filetypes = { ... },
